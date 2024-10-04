@@ -39,7 +39,11 @@ const LogoImg = styled.div`
 `;
 const Desc = styled.div`
   font-size: 20px;
+  line-height: 1.2;
   text-align: center;
+  background: crimson;
+  padding: 8px 14px;
+  border-radius: 8px;
 `;
 
 const Result = () => {

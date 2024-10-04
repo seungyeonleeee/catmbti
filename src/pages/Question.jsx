@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 0 10px;
   color: #fff;
 `;
 const Title = styled.div`
@@ -21,6 +22,13 @@ const Title = styled.div`
   background: crimson;
   border-radius: 8px;
   padding: 8px 16px;
+  @media screen and (max-width: 780px) {
+    font-size: 24px;
+    text-align: center;
+  }
+  @media screen and (max-width: 360px) {
+    font-size: 18px;
+  }
 `;
 const ButtonGroup = styled.div`
   display: flex;
@@ -31,6 +39,20 @@ const ButtonGroup = styled.div`
     width: 400px;
     height: 200px;
     font-size: 22px;
+  }
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+    button {
+      width: 300px;
+      height: 150px;
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 360px) {
+    button {
+      width: 200px;
+      height: 100px;
+    }
   }
 `;
 
@@ -147,6 +169,7 @@ const Question = () => {
         </Title>
         <ButtonGroup>
           <Button
+            variant="danger"
             // 13 가중치가 달라서 함수 다르게, // 18 type 인자값 추가
             onClick={() => handleClickButton(1, QuestionData[questionNo].type)}
           >
