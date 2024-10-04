@@ -3,13 +3,17 @@ import { Button } from "react-bootstrap";
 
 const { Kakao } = window;
 
-const KakaoShareButton = () => {
+const KakaoShareButton = ({ data }) => {
+  // console.log(data);
+
   const url = "https://catmbti241004.netlify.app/";
   const resultURL = window.location.href;
 
   useEffect(() => {
+    // if (!window.Kakao.isInitialized())
+    Kakao.cleanup();
     Kakao.init("308c15c26bd1a5ea3ce7f573105d736b");
-    console.log(Kakao.isInitialized()); // true
+    // console.log(Kakao.isInitialized()); // true
   }, []);
 
   const shareKakao = () => {
@@ -17,13 +21,11 @@ const KakaoShareButton = () => {
       objectType: "feed",
       content: {
         title: "예비집사 판별기 결과",
-        description:
-          "예비집사님이 고양이를 키운다면 가장 잘 맞는 고양이는 엑죠틱 입니다.",
-        imageUrl:
-          "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+        description: `예비집사님이 고양이를 키운다면 가장 잘 맞는 고양이는 ${data.name} 입니다.`,
+        imageUrl: `${url}${data.image}`,
         link: {
-          mobileWebUrl: "https://developers.kakao.com",
-          webUrl: "https://developers.kakao.com",
+          mobileWebUrl: resultURL,
+          webUrl: resultURL,
         },
       },
       buttons: [
